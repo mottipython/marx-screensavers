@@ -42,6 +42,30 @@ film, the photograph and the 1850s scenery are all in the US public domain.
 
 [Download](https://github.com/mottipython/captain-spaulding/releases/latest) · [About it](https://github.com/mottipython/captain-spaulding#readme)
 
+## On Windows, step by step
+
+For Windows 10 or 11. Each screen saver is one download.
+
+1. Click the one you want:
+   - [**Download The Mirror Scene**](https://github.com/mottipython/mirror-scene/releases/latest/download/MirrorScene-Setup-0.1.0.exe)
+   - [**Download Hooray for Captain Spaulding**](https://github.com/mottipython/captain-spaulding/releases/latest/download/CaptainSpaulding-Setup-0.1.0.exe)
+2. If the browser says the file "isn't commonly downloaded" or "could harm your
+   device", click the **⋯** (or **^**) beside it and choose **Keep**, then **Keep
+   anyway**.
+3. Open the downloaded file (click it at the top or bottom of the browser, or find
+   it in the **Downloads** folder).
+4. A blue box may say **"Windows protected your PC"**. Click **More info**, then
+   **Run anyway**. (It says this because the program isn't signed with a paid
+   certificate, not because anything is wrong with it.)
+5. Windows asks **"Do you want to allow this app to make changes?"** Click **Yes**.
+6. Click **Next**, then **Install**, then **Finish**. The Screen Saver Settings open
+   with the new screen saver already chosen. Click **OK**.
+
+That's it: it comes on by itself when the computer has been left alone. To pick a
+different one later, type **screen saver** in the Start menu search and open
+**Change screen saver**. To remove one, open **Settings**, **Apps**, find it in the
+list and choose **Uninstall**.
+
 ## On the Mac
 
 The quickest way to install them is to paste this into Terminal. It installs every
