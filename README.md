@@ -37,8 +37,8 @@ film, the photograph and the 1850s scenery are all in the US public domain.
 
 | | |
 |---|---|
-| ![](https://raw.githubusercontent.com/mottipython/captain-spaulding/main/docs/screenshots/02-let-down-on-a-string.jpg) | ![](https://raw.githubusercontent.com/mottipython/captain-spaulding/main/docs/screenshots/03-hooray.jpg) |
-| Let down on a string | Hooray for Captain Spaulding |
+| ![](https://raw.githubusercontent.com/mottipython/captain-spaulding/main/docs/screenshots/02-let-down-on-a-string.jpg) | ![](https://raw.githubusercontent.com/mottipython/captain-spaulding/main/docs/screenshots/03-hello-i-must-be-going.jpg) |
+| Let down on a string | "Hello, I must be going" |
 
 [Download](https://github.com/mottipython/captain-spaulding/releases/latest) · [About it](https://github.com/mottipython/captain-spaulding#readme)
 
