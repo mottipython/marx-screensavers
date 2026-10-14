@@ -10,10 +10,10 @@
 #
 # Each screen saver module goes into ~/Library/Screen Savers, for your user only, so no
 # password is asked for. Then choose one in System Settings, Screen Saver.
-ALL="mirror-scene"
+ALL="mirror-scene captain-spaulding"
 title() {
     case "$1" in
-    mirror-scene) echo "The Mirror Scene" ;;
+    mirror-scene) echo "The Mirror Scene" ;; captain-spaulding) echo "Hooray for Captain Spaulding" ;;
     *) return 1 ;;
     esac
 }

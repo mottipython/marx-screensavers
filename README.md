@@ -26,12 +26,21 @@ through the frame.
 
 [Download](https://github.com/mottipython/mirror-scene/releases/latest) · [About it](https://github.com/mottipython/mirror-scene#readme)
 
-## Coming next
+## [Hooray for Captain Spaulding](https://github.com/mottipython/captain-spaulding)
 
-**Hooray for Captain Spaulding**, from *Animal Crackers* (1930): the African
-explorer's arrival as a jointed paper-doll show on a cardboard stage, cut from the
-film's publicity photographs, with the song from the film. Both the film and its
-photographs entered the US public domain in 2026.
+[![Hooray for Captain Spaulding](https://raw.githubusercontent.com/mottipython/captain-spaulding/main/docs/screenshots/04-the-dance.jpg)](https://github.com/mottipython/captain-spaulding)
+
+The African explorer from *Animal Crackers* (1930), cut out of the film's publicity
+photograph as a jointed paper doll with brass split pins, dancing on a Victorian
+toy-theatre stage to the song from the film, legs going right round their pins. The
+film, the photograph and the 1850s scenery are all in the US public domain.
+
+| | |
+|---|---|
+| ![](https://raw.githubusercontent.com/mottipython/captain-spaulding/main/docs/screenshots/02-he-marches-on.jpg) | ![](https://raw.githubusercontent.com/mottipython/captain-spaulding/main/docs/screenshots/05-right-round.jpg) |
+| He marches on | A leg right round its pin |
+
+[Download](https://github.com/mottipython/captain-spaulding/releases/latest) · [About it](https://github.com/mottipython/captain-spaulding#readme)
 
 ## On the Mac
 
@@ -41,7 +50,7 @@ screen saver module for your user (no password needed):
     curl -fsSL https://raw.githubusercontent.com/mottipython/marx-screensavers/main/tools/mac-install.sh | sh
 
 It opens the Screen Saver settings when it has finished; they are at the end of the
-list. To install only some, name them (`mirror-scene`), and to take them off again:
+list. To install only some, name them (`mirror-scene`, `captain-spaulding`), and to take them off again:
 
     curl -fsSL https://raw.githubusercontent.com/mottipython/marx-screensavers/main/tools/mac-install.sh | sh -s -- --uninstall
 
