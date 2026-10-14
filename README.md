@@ -28,7 +28,7 @@ through the frame.
 
 ## [Hooray for Captain Spaulding](https://github.com/mottipython/captain-spaulding)
 
-[![Hooray for Captain Spaulding](https://raw.githubusercontent.com/mottipython/captain-spaulding/main/docs/screenshots/04-the-dance.jpg)](https://github.com/mottipython/captain-spaulding)
+[![Hooray for Captain Spaulding](https://raw.githubusercontent.com/mottipython/captain-spaulding/main/docs/screenshots/04-the-swivel.jpg)](https://github.com/mottipython/captain-spaulding)
 
 The African explorer from *Animal Crackers* (1930), cut out of the film's publicity
 photograph as a jointed paper doll with brass split pins, dancing on a Victorian
@@ -37,8 +37,8 @@ film, the photograph and the 1850s scenery are all in the US public domain.
 
 | | |
 |---|---|
-| ![](https://raw.githubusercontent.com/mottipython/captain-spaulding/main/docs/screenshots/02-he-marches-on.jpg) | ![](https://raw.githubusercontent.com/mottipython/captain-spaulding/main/docs/screenshots/05-right-round.jpg) |
-| He marches on | A leg right round its pin |
+| ![](https://raw.githubusercontent.com/mottipython/captain-spaulding/main/docs/screenshots/02-let-down-on-a-string.jpg) | ![](https://raw.githubusercontent.com/mottipython/captain-spaulding/main/docs/screenshots/03-hooray.jpg) |
+| Let down on a string | Hooray for Captain Spaulding |
 
 [Download](https://github.com/mottipython/captain-spaulding/releases/latest) · [About it](https://github.com/mottipython/captain-spaulding#readme)
 
