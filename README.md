@@ -62,6 +62,29 @@ them. About six minutes, to old public-domain band records.
 
 [Download](https://github.com/mottipython/duck-soup/releases/latest) · [About it](https://github.com/mottipython/duck-soup#readme)
 
+## [The Groucho Clock](https://github.com/mottipython/groucho-clock)
+
+[![The Groucho Clock](https://raw.githubusercontent.com/mottipython/groucho-clock/main/docs/screenshots/01-seven-fifty-two.jpg)](https://github.com/mottipython/groucho-clock)
+
+A cartoon clock you can actually read: Groucho's glasses are the two clock faces and
+his pupils the hands. His cigar ticks off the seconds and drops its ash on the hour,
+his eyebrows waggle every minute, and every quarter hour he holds up one of his own
+one-liners. Now and then his brother Gummo peeks in.
+
+[Download](https://github.com/mottipython/groucho-clock/releases/latest) · [About it](https://github.com/mottipython/groucho-clock#readme)
+
+## [Groucho Time](https://github.com/mottipython/groucho-time)
+
+[![Groucho Time](https://raw.githubusercontent.com/mottipython/groucho-time/main/docs/screenshots/05-raquel-torres.jpg)](https://github.com/mottipython/groucho-time)
+
+The same clock in the Monty Python manner: Terry Gilliam cut-outs from public-domain
+pictures. Groucho's head on a Victorian Father Time, eyes ticking to and fro, the
+top of his head flipping open for a one-liner every quarter hour, Harpo as the
+sphinx, Chico, Zeppo and Gummo peeking in, and Margaret Dumont and Raquel Torres
+passing through, to boings, swanee whistles and a wolf whistle.
+
+[Download](https://github.com/mottipython/groucho-time/releases/latest) · [About it](https://github.com/mottipython/groucho-time#readme)
+
 ## On Windows, step by step
 
 For Windows 10 or 11. Each screen saver is one download.
@@ -70,6 +93,8 @@ For Windows 10 or 11. Each screen saver is one download.
    - [**Download The Mirror Scene**](https://github.com/mottipython/mirror-scene/releases/latest/download/MirrorScene-Setup-1.0.0.exe)
    - [**Download Hooray for Captain Spaulding**](https://github.com/mottipython/captain-spaulding/releases/latest/download/CaptainSpaulding-Setup-1.0.0.exe)
    - [**Download Duck Soup**](https://github.com/mottipython/duck-soup/releases/latest/download/DuckSoup-Setup-1.0.0.exe)
+   - [**Download The Groucho Clock**](https://github.com/mottipython/groucho-clock/releases/latest/download/GrouchoClock-Setup-1.0.0.exe)
+   - [**Download Groucho Time**](https://github.com/mottipython/groucho-time/releases/latest/download/GrouchoTime-Setup-1.0.0.exe)
 2. If the browser says the file "isn't commonly downloaded" or "could harm your
    device", click the **⋯** (or **^**) beside it and choose **Keep**, then **Keep
    anyway**.
@@ -95,7 +120,7 @@ screen saver module for your user (no password needed):
     curl -fsSL https://raw.githubusercontent.com/mottipython/marx-screensavers/main/tools/mac-install.sh | sh
 
 It opens the Screen Saver settings when it has finished; they are at the end of the
-list. To install only some, name them (`mirror-scene`, `captain-spaulding`, `duck-soup`), and to take them off again:
+list. To install only some, name them (`mirror-scene`, `captain-spaulding`, `duck-soup`, `groucho-clock`, `groucho-time`), and to take them off again:
 
     curl -fsSL https://raw.githubusercontent.com/mottipython/marx-screensavers/main/tools/mac-install.sh | sh -s -- --uninstall
 
