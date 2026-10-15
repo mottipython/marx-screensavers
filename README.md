@@ -66,10 +66,11 @@ them. About six minutes, to old public-domain band records.
 
 [![The Groucho Clock](https://raw.githubusercontent.com/mottipython/groucho-clock/main/docs/screenshots/01-seven-fifty-two.jpg)](https://github.com/mottipython/groucho-clock)
 
-A cartoon clock you can actually read: Groucho's glasses are the two clock faces and
-his pupils the hands. His cigar ticks off the seconds and drops its ash on the hour,
-his eyebrows waggle every minute, and every quarter hour he holds up one of his own
-one-liners. Now and then his brother Gummo peeks in.
+A cartoon clock you can actually read: Groucho, in his greasepaint moustache and
+eyebrows, with his glasses as the two clock faces and his pupils as the hands. His
+cigar ticks off the seconds and drops its ash on the hour, his eyebrows waggle every
+minute, and every quarter hour one of his own one-liners comes up. Now and then one of
+his brothers peeks in: Gummo, Chico, Harpo (honking) or Zeppo.
 
 [Download](https://github.com/mottipython/groucho-clock/releases/latest) · [About it](https://github.com/mottipython/groucho-clock#readme)
 
