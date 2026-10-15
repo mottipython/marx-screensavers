@@ -114,7 +114,7 @@ For Windows 10 or 11. Each screen saver is one download.
    - [**Download Duck Soup**](https://github.com/mottipython/duck-soup/releases/latest/download/DuckSoup-Setup-1.1.0.exe)
    - [**Download The Groucho Clock**](https://github.com/mottipython/groucho-clock/releases/latest/download/GrouchoClock-Setup-1.1.1.exe)
    - [**Download Groucho Time**](https://github.com/mottipython/groucho-time/releases/latest/download/GrouchoTime-Setup-1.1.1.exe)
-   - [**Download Harpo's Coat**](https://github.com/mottipython/harpos-coat/releases/latest/download/HarposCoat-Setup-1.0.0.exe)
+   - [**Download Harpo's Coat**](https://github.com/mottipython/harpos-coat/releases/latest/download/HarposCoat-Setup-1.0.1.exe)
 2. If the browser says the file "isn't commonly downloaded" or "could harm your
    device", click the **⋯** (or **^**) beside it and choose **Keep**, then **Keep
    anyway**.
