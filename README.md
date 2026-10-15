@@ -7,7 +7,8 @@ its own small program with its own installers: an `.rpm` for Fedora and Nobara, 
 `.deb` for Debian, Ubuntu and Mint, a Windows setup program that adds it to Screen
 Saver Settings, and for the Mac a screen saver module and an app.
 
-They are unofficial homages, not connected with the Marx Brothers' estate or the
+The cartoon art is drawn with Google's Gemini and the programs are written with
+Anthropic's Claude, from the author's direction. They are unofficial homages, not connected with the Marx Brothers' estate or the
 studios.
 
 ## [The Mirror Scene](https://github.com/mottipython/mirror-scene)
@@ -44,6 +45,23 @@ film, the photograph and the 1850s scenery are all in the US public domain.
 
 [Download](https://github.com/mottipython/captain-spaulding/releases/latest) · [About it](https://github.com/mottipython/captain-spaulding#readme)
 
+## [Duck Soup](https://github.com/mottipython/duck-soup)
+
+[![Duck Soup](https://raw.githubusercontent.com/mottipython/duck-soup/main/docs/screenshots/03-honk.jpg)](https://github.com/mottipython/duck-soup)
+
+The sight gags from *Duck Soup* (1933), one after another in the order of the
+film: four ducks in a pot for the titles, His Excellency down the fireman's pole,
+both lemonade stands, the radio, the mirror, Paul Revere's ride, Harpo in bed with
+the horse, and the war in a new uniform every shot, with the sidecar gag between
+them. About six minutes, to old public-domain band records.
+
+| | |
+|---|---|
+| ![](https://raw.githubusercontent.com/mottipython/duck-soup/main/docs/screenshots/02-down-the-pole.jpg) | ![](https://raw.githubusercontent.com/mottipython/duck-soup/main/docs/screenshots/08-good-night.jpg) |
+| Down the pole | Good night |
+
+[Download](https://github.com/mottipython/duck-soup/releases/latest) · [About it](https://github.com/mottipython/duck-soup#readme)
+
 ## On Windows, step by step
 
 For Windows 10 or 11. Each screen saver is one download.
@@ -51,6 +69,7 @@ For Windows 10 or 11. Each screen saver is one download.
 1. Click the one you want:
    - [**Download The Mirror Scene**](https://github.com/mottipython/mirror-scene/releases/latest/download/MirrorScene-Setup-0.1.0.exe)
    - [**Download Hooray for Captain Spaulding**](https://github.com/mottipython/captain-spaulding/releases/latest/download/CaptainSpaulding-Setup-0.1.0.exe)
+   - [**Download Duck Soup**](https://github.com/mottipython/duck-soup/releases/latest/download/DuckSoup-Setup-0.1.0.exe)
 2. If the browser says the file "isn't commonly downloaded" or "could harm your
    device", click the **⋯** (or **^**) beside it and choose **Keep**, then **Keep
    anyway**.
@@ -76,7 +95,7 @@ screen saver module for your user (no password needed):
     curl -fsSL https://raw.githubusercontent.com/mottipython/marx-screensavers/main/tools/mac-install.sh | sh
 
 It opens the Screen Saver settings when it has finished; they are at the end of the
-list. To install only some, name them (`mirror-scene`, `captain-spaulding`), and to take them off again:
+list. To install only some, name them (`mirror-scene`, `captain-spaulding`, `duck-soup`), and to take them off again:
 
     curl -fsSL https://raw.githubusercontent.com/mottipython/marx-screensavers/main/tools/mac-install.sh | sh -s -- --uninstall
 

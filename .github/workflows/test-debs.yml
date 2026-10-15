@@ -17,7 +17,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir debs && cd debs
-          for r in mirror-scene captain-spaulding; do
+          for r in mirror-scene captain-spaulding duck-soup; do
             gh release download -R mottipython/$r -p '*.deb'
           done
           ls -l
