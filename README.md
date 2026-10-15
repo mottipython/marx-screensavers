@@ -93,8 +93,8 @@ For Windows 10 or 11. Each screen saver is one download.
    - [**Download The Mirror Scene**](https://github.com/mottipython/mirror-scene/releases/latest/download/MirrorScene-Setup-1.0.0.exe)
    - [**Download Hooray for Captain Spaulding**](https://github.com/mottipython/captain-spaulding/releases/latest/download/CaptainSpaulding-Setup-1.1.0.exe)
    - [**Download Duck Soup**](https://github.com/mottipython/duck-soup/releases/latest/download/DuckSoup-Setup-1.1.0.exe)
-   - [**Download The Groucho Clock**](https://github.com/mottipython/groucho-clock/releases/latest/download/GrouchoClock-Setup-1.1.0.exe)
-   - [**Download Groucho Time**](https://github.com/mottipython/groucho-time/releases/latest/download/GrouchoTime-Setup-1.1.0.exe)
+   - [**Download The Groucho Clock**](https://github.com/mottipython/groucho-clock/releases/latest/download/GrouchoClock-Setup-1.1.1.exe)
+   - [**Download Groucho Time**](https://github.com/mottipython/groucho-time/releases/latest/download/GrouchoTime-Setup-1.1.1.exe)
 2. If the browser says the file "isn't commonly downloaded" or "could harm your
    device", click the **⋯** (or **^**) beside it and choose **Keep**, then **Keep
    anyway**.
