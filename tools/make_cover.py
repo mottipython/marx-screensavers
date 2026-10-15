@@ -1,8 +1,14 @@
-"""The index page's cover: Duck Soup's curtains and swags, and the three screensavers
-hanging on ropes on the stage between them, under a title card.
+"""The index page's cover: Duck Soup's curtains and swags, and the six screensavers
+hanging on ropes on the stage between them, in two rows under a title card. It is also
+the picture to post with a link to the page.
 
-    duck-soup --snapshot stage.bmp --time 2.95 --size 2000x800 --seed 7   (then make it a PNG)
-    tools/make_cover.py stage.png docs/cover.jpg MIRROR.jpg SPAULDING.jpg DUCKSOUP.jpg
+    duck-soup --snapshot stage.bmp --time 2.95 --size 2000x1050 --seed 7 --mute   (then make it a PNG)
+    tools/make_cover.py stage.png docs/cover.jpg MIRROR.jpg SPAULDING.jpg DUCKSOUP.jpg \
+        GROUCHOCLOCK.jpg GROUCHOTIME.jpg HARPOSCOAT.jpg
+
+The pictures used: mirror-scene 01-nose-to-nose, captain-spaulding
+03-hello-i-must-be-going, duck-soup 03-honk, groucho-clock 01-seven-fifty-two,
+groucho-time 05-raquel-torres and harpos-coat 01-a-candle-burning-at-both-ends.
 """
 import sys, numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
@@ -54,18 +60,19 @@ def rope(x, y0, y1):
     d.line([(x, y0), (x, y1)], fill=INK, width=7); d.line([(x, y0), (x, y1)], fill=ROPE, width=4)
     d.ellipse([x - 8, y1 - 8, x + 8, y1 + 8], fill=GOLD)
 # the title card, on two ropes from the swags
-tx0, tx1, ty0, ty1 = W * 0.30, W * 0.70, H * 0.17, H * 0.385
+tx0, tx1, ty0, ty1 = W * 0.30, W * 0.70, H * 0.12, H * 0.30
 for x in (W * 0.36, W * 0.64): rope(x, 0, ty0 + 6)
 plate(tx0, ty0, tx1, ty1)
-centred("THE", W / 2, ty0 + 24, font(int(H * 0.035)), SILVER, 6)
-centred("MARX BROTHERS", W / 2, ty0 + 48, font(int(H * 0.085)), SILVER, 4)
-centred("— SCREENSAVERS —", W / 2, ty0 + 48 + H * 0.098, font(int(H * 0.034)), GREY, 8)
-# the three, each a picture in a gilt frame, hung on ropes, with its name beneath
-pw = int(W * 0.235); ph = int(pw * 9 / 16); gap = int(W * 0.03)
-names = ["THE MIRROR SCENE", "CAPTAIN SPAULDING", "DUCK SOUP"]
-x = (W - 3 * pw - 2 * gap) // 2; py = int(H * 0.47)
+centred("THE", W / 2, ty0 + 22, font(int(H * 0.03)), SILVER, 6)
+centred("MARX BROTHERS", W / 2, ty0 + 44, font(int(H * 0.066)), SILVER, 4)
+centred("— SCREENSAVERS —", W / 2, ty0 + 44 + H * 0.082, font(int(H * 0.028)), GREY, 8)
+# the six, each a picture in a gilt frame, hung on ropes, with its name beneath
+pw = int(W * 0.19); ph = int(pw * 9 / 16); gap = int(W * 0.035)
+names = ["THE MIRROR SCENE", "CAPTAIN SPAULDING", "DUCK SOUP", "THE GROUCHO CLOCK", "GROUCHO TIME", "HARPO'S COAT"]
+tilts = (-1.2, 0.6, -0.6, 0.8, -0.9, 1.0)
 for i, (path, name) in enumerate(zip(shots, names)):
-    tilt = (-1.2, 0.6, -0.6)[i]
+    row, col = divmod(i, 3)
+    x = (W - 3 * pw - 2 * gap) // 2 + col * (pw + gap); py = int(H * (0.36 if row == 0 else 0.645))
     pic = Image.open(path).convert("RGB")
     pr = pic.width / pic.height
     if pr > 16 / 9: cw = int(pic.height * 16 / 9); pic = pic.crop(((pic.width - cw) // 2, 0, (pic.width + cw) // 2, pic.height))
@@ -75,12 +82,13 @@ for i, (path, name) in enumerate(zip(shots, names)):
     fd.rectangle([0, 0, pw + 35, ph + 35], outline=INK, width=4)
     fd.rectangle([10, 10, pw + 25, ph + 25], outline=DARK_GOLD, width=4)
     fr.paste(pic, (18, 18)); fd.rectangle([17, 17, pw + 18, ph + 18], outline=INK, width=2)
-    fr = fr.rotate(tilt, resample=Image.BICUBIC, expand=True)
+    fr = fr.rotate(tilts[i], resample=Image.BICUBIC, expand=True)
     sh = Image.new("RGBA", fr.size, (0, 0, 0, 0)); sh.putalpha(fr.split()[3].point(lambda v: v * 0.55))
     sh = sh.filter(ImageFilter.GaussianBlur(10))
-    for rx in (x + pw * 0.25, x + pw * 0.75): rope(int(rx), 0 if i != 1 else int(ty1), py + 4)
+    top = 0 if row == 0 else int(H * 0.36) + ph + 70
+    if row == 0 and col == 1: top = int(ty1)
+    for rx in (x + pw * 0.25, x + pw * 0.75): rope(int(rx), top, py + 4)
     im.paste(sh, (x + 10, py + 14), sh); im.paste(fr, (x - 18, py - 18), fr)
-    centred(name, x + pw / 2, py + ph + 34, font(int(H * 0.036)), SILVER, 5)
-    x += pw + gap
+    centred(name, x + pw / 2, py + ph + 30, font(int(H * 0.027)), SILVER, 4)
 im.save(out, quality=90)
 print(out, im.size)
