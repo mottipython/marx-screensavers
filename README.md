@@ -1,5 +1,7 @@
 # Marx Brothers screensavers
 
+![The Marx Brothers screensavers](docs/cover.jpg)
+
 Screensavers after the Marx Brothers' films, for Linux, Windows and macOS. Each is
 its own small program with its own installers: an `.rpm` for Fedora and Nobara, a
 `.deb` for Debian, Ubuntu and Mint, a Windows setup program that adds it to Screen
