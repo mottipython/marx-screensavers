@@ -1,0 +1,44 @@
+name: test-saver helper
+# Builds tools/test-saver (for both kinds of Mac) and puts it on the "test-saver"
+# release, where tools/mac-test.sh downloads it to try each screen saver module.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [tools/test-saver.m, .github/workflows/test-saver.yml]
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: |
+          mkdir -p out
+          cc -fobjc-arc -O1 -arch arm64 -arch x86_64 -mmacosx-version-min=11.0 \
+             -o out/test-saver tools/test-saver.m -framework Cocoa -framework ScreenSaver
+          codesign --force -s - out/test-saver
+          file out/test-saver
+          cd out && ditto -c -k test-saver test-saver.zip
+      - name: Try it on one of the screen savers
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download -R mottipython/harpos-coat -p '*-mac-screensaver.zip' -D try
+          ditto -x -k try/*.zip try
+          out/test-saver try/*.saver try/saver.png
+          test -s try/saver.png
+      - name: Put it on the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view test-saver >/dev/null 2>&1 || gh release create test-saver --prerelease \
+             --title "test-saver helper" --notes "A small helper for tools/mac-test.sh: it loads a screen saver module the way macOS does and saves what it drew. Not a screensaver."
+          gh release upload test-saver out/test-saver.zip --clobber
+      - uses: actions/upload-artifact@v4
+        with:
+          name: test-saver
+          path: |
+            out/test-saver.zip
+            try/saver.png

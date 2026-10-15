@@ -149,8 +149,13 @@ Intel, macOS 11 or later: the screen saver module (`-mac-screensaver.zip`; unzip
 double-click the `.saver` file) and an ordinary full-screen app (`-mac.zip`). They
 are not signed with an Apple developer certificate, so when downloaded in a browser
 macOS refuses them at first: allow them under System Settings, Privacy & Security.
-The command above avoids that. `tools/mac-test.sh` tries every one in turn and
-writes a report.
+The command above avoids that.
+
+To test them all on a Mac, paste this into Terminal. For each one it checks that the
+screen saver module loads and draws, that the app draws, moves, makes sound and runs in a
+window, and that nothing crashed, then opens a report with pictures:
+
+    curl -fsSL https://raw.githubusercontent.com/mottipython/marx-screensavers/main/tools/mac-test.sh | sh
 
 ## On Linux
 
