@@ -86,6 +86,24 @@ passing through, to boings, swanee whistles and a wolf whistle.
 
 [Download](https://github.com/mottipython/groucho-time/releases/latest) · [About it](https://github.com/mottipython/groucho-time#readme)
 
+## [Harpo's Coat](https://github.com/mottipython/harpos-coat)
+
+[![Harpo's Coat](https://raw.githubusercontent.com/mottipython/harpos-coat/main/docs/screenshots/01-a-candle-burning-at-both-ends.jpg)](https://github.com/mottipython/harpos-coat)
+
+Harpo on a vaudeville stage pulls one thing after another out of his long coat: a
+candle burning at both ends, a cup of hot coffee, a fish, a blowtorch, a live duck,
+an alarm clock that goes off, an anchor, and last a ladder far too long for any coat.
+He holds each one up to show us and tosses it over his shoulder onto a growing heap,
+then honks, tips his hat or pulls his "gookie" face, to pops, swanee whistles, quacks
+and crashes.
+
+| | |
+|---|---|
+| ![](https://raw.githubusercontent.com/mottipython/harpos-coat/main/docs/screenshots/04-the-ladder.jpg) | ![](https://raw.githubusercontent.com/mottipython/harpos-coat/main/docs/screenshots/05-the-heap.jpg) |
+| The ladder | The heap |
+
+[Download](https://github.com/mottipython/harpos-coat/releases/latest) · [About it](https://github.com/mottipython/harpos-coat#readme)
+
 ## On Windows, step by step
 
 For Windows 10 or 11. Each screen saver is one download.
@@ -96,6 +114,7 @@ For Windows 10 or 11. Each screen saver is one download.
    - [**Download Duck Soup**](https://github.com/mottipython/duck-soup/releases/latest/download/DuckSoup-Setup-1.1.0.exe)
    - [**Download The Groucho Clock**](https://github.com/mottipython/groucho-clock/releases/latest/download/GrouchoClock-Setup-1.1.1.exe)
    - [**Download Groucho Time**](https://github.com/mottipython/groucho-time/releases/latest/download/GrouchoTime-Setup-1.1.1.exe)
+   - [**Download Harpo's Coat**](https://github.com/mottipython/harpos-coat/releases/latest/download/HarposCoat-Setup-1.0.0.exe)
 2. If the browser says the file "isn't commonly downloaded" or "could harm your
    device", click the **⋯** (or **^**) beside it and choose **Keep**, then **Keep
    anyway**.
@@ -121,7 +140,7 @@ screen saver module for your user (no password needed):
     curl -fsSL https://raw.githubusercontent.com/mottipython/marx-screensavers/main/tools/mac-install.sh | sh
 
 It opens the Screen Saver settings when it has finished; they are at the end of the
-list. To install only some, name them (`mirror-scene`, `captain-spaulding`, `duck-soup`, `groucho-clock`, `groucho-time`), and to take them off again:
+list. To install only some, name them (`mirror-scene`, `captain-spaulding`, `duck-soup`, `groucho-clock`, `groucho-time`, `harpos-coat`), and to take them off again:
 
     curl -fsSL https://raw.githubusercontent.com/mottipython/marx-screensavers/main/tools/mac-install.sh | sh -s -- --uninstall
 
