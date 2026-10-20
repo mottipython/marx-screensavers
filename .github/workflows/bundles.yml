@@ -1,0 +1,35 @@
+# All the screen savers in one download: a Windows setup program and a Mac installer
+# package, each built from every screen saver's latest release. Run it by hand
+# (Actions, Bundles, Run workflow) after a new release of any of them; the two files
+# come out as the run's artifacts, to attach to a release of this repository.
+name: Bundles
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version of the bundles
+        default: 1.0.0
+jobs:
+  windows:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq nsis
+      - run: sh tools/build-bundle.sh "${{ inputs.version }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MarxBrothers-ScreenSavers-Setup-${{ inputs.version }}
+          path: dist/*.exe
+  mac:
+    runs-on: macos-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: sh tools/build-mac-bundle.sh "${{ inputs.version }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MarxBrothers-ScreenSavers-${{ inputs.version }}-mac
+          path: dist/*.pkg
