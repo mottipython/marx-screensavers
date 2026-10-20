@@ -19,10 +19,12 @@ ls "build/mac/root/Library/Screen Savers"
 # installed where they are meant to go, not "relocated" to some other copy of the
 # same bundle the Installer happens to find on the Mac
 pkgbuild --analyze --root build/mac/root build/mac/components.plist
+plutil -p build/mac/components.plist
 n=$(/usr/libexec/PlistBuddy -c 'Print' build/mac/components.plist | grep -c 'RootRelativeBundlePath')
 i=0
 while [ $i -lt "$n" ]; do
-    /usr/libexec/PlistBuddy -c "Set :$i:BundleIsRelocatable false" build/mac/components.plist
+    /usr/libexec/PlistBuddy -c "Set :$i:BundleIsRelocatable false" build/mac/components.plist 2>/dev/null ||
+        /usr/libexec/PlistBuddy -c "Add :$i:BundleIsRelocatable bool false" build/mac/components.plist
     i=$((i + 1))
 done
 pkgbuild --root build/mac/root --component-plist build/mac/components.plist \
