@@ -155,5 +155,7 @@ Function ChooseLeave
 FunctionEnd
 
 Function OpenSettings
-  Exec 'rundll32.exe shell32.dll,Control_RunDLL desk.cpl,,1'
+  ; the 64-bit Settings: this setup is a 32-bit program, and a 32-bit rundll32 looks
+  ; for screen savers in SysWOW64, finds none of these, and shows (None)
+  Exec '"$WINDIR\Sysnative\rundll32.exe" shell32.dll,Control_RunDLL desk.cpl,,1'
 FunctionEnd
