@@ -30,13 +30,18 @@ done
 pkgbuild --root build/mac/root --component-plist build/mac/components.plist \
     --identifier io.github.mottipython.marx-screensavers --version "$VERSION" --install-location / \
     build/mac/marx-screensavers.pkg
+# the Installer's first page (inline text is ignored: it has to be a file)
+mkdir -p build/mac/resources
+cat > build/mac/resources/welcome.txt <<TXT
+This puts the six Marx Brothers screen savers on this Mac: The Mirror Scene, Hooray for Captain Spaulding, Duck Soup, The Groucho Clock, Groucho Time and Harpo's Coat.
+
+Afterwards, choose one in System Settings, Screen Saver: they are at the end of the list.
+TXT
 cat > build/mac/distribution.xml <<XML
 <?xml version="1.0" encoding="utf-8"?>
 <installer-gui-script minSpecVersion="2">
     <title>The Marx Brothers Screen Savers</title>
-    <welcome mime-type="text/plain"><![CDATA[This puts the six Marx Brothers screen savers on this Mac: The Mirror Scene, Hooray for Captain Spaulding, Duck Soup, The Groucho Clock, Groucho Time and Harpo's Coat.
-
-Afterwards, choose one in System Settings, Screen Saver: they are at the end of the list.]]></welcome>
+    <welcome file="welcome.txt" mime-type="text/plain"/>
     <options customize="never" require-scripts="false" hostArchitectures="arm64,x86_64"/>
     <domains enable_localSystem="true"/>
     <choices-outline><line choice="all"/></choices-outline>
@@ -44,6 +49,6 @@ Afterwards, choose one in System Settings, Screen Saver: they are at the end of 
     <pkg-ref id="io.github.mottipython.marx-screensavers" version="$VERSION">marx-screensavers.pkg</pkg-ref>
 </installer-gui-script>
 XML
-productbuild --distribution build/mac/distribution.xml --package-path build/mac \
+productbuild --distribution build/mac/distribution.xml --package-path build/mac --resources build/mac/resources \
     "dist/MarxBrothers-ScreenSavers-$VERSION.pkg"
 ls -la "dist/MarxBrothers-ScreenSavers-$VERSION.pkg"
