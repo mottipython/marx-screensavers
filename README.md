@@ -11,6 +11,16 @@ The cartoon art is drawn with Google's Gemini and the programs are written with
 Anthropic's Claude, from the author's direction. They are unofficial homages, not connected with the Marx Brothers' estate or the
 studios.
 
+## All of them at once
+
+| | |
+|---|---|
+| **Windows** | [**Download the Marx Brothers Screen Savers setup**](https://github.com/mottipython/marx-screensavers/releases/latest/download/MarxBrothers-ScreenSavers-Setup-1.0.0.exe) (113 MB): tick the ones you want, choose which comes on |
+| **Mac** | [**Download the Marx Brothers Screen Savers installer**](https://github.com/mottipython/marx-screensavers/releases/latest/download/MarxBrothers-ScreenSavers-1.0.0.pkg) (214 MB), or the Terminal line [below](#on-the-mac) |
+| **Linux** | paste the line [below](#on-linux) into a terminal |
+
+Each one can still be downloaded on its own from its page.
+
 ## [The Mirror Scene](https://github.com/mottipython/mirror-scene)
 
 [![The Mirror Scene](https://raw.githubusercontent.com/mottipython/mirror-scene/main/docs/screenshots/01-nose-to-nose.jpg)](https://github.com/mottipython/mirror-scene)
@@ -106,9 +116,9 @@ and crashes.
 
 ## On Windows, step by step
 
-For Windows 10 or 11. Each screen saver is one download.
+For Windows 10 or 11.
 
-1. Click the one you want:
+1. Click [**the setup with all of them**](https://github.com/mottipython/marx-screensavers/releases/latest/download/MarxBrothers-ScreenSavers-Setup-1.0.0.exe), or just the one you want:
    - [**Download The Mirror Scene**](https://github.com/mottipython/mirror-scene/releases/latest/download/MirrorScene-Setup-1.0.0.exe)
    - [**Download Hooray for Captain Spaulding**](https://github.com/mottipython/captain-spaulding/releases/latest/download/CaptainSpaulding-Setup-1.1.0.exe)
    - [**Download Duck Soup**](https://github.com/mottipython/duck-soup/releases/latest/download/DuckSoup-Setup-1.1.0.exe)
@@ -124,8 +134,9 @@ For Windows 10 or 11. Each screen saver is one download.
    **Run anyway**. (It says this because the program isn't signed with a paid
    certificate, not because anything is wrong with it.)
 5. Windows asks **"Do you want to allow this app to make changes?"** Click **Yes**.
-6. Click **Next**, then **Install**, then **Finish**. The Screen Saver Settings open
-   with the new screen saver already chosen. Click **OK**.
+6. Click **Next**, then **Install**, then **Finish**. (With the setup for all of
+   them, untick any you don't want, and choose the one to come on.) The Screen
+   Saver Settings open with it already chosen. Click **OK**.
 
 That's it: it comes on by itself when the computer has been left alone. To pick a
 different one later, type **screen saver** in the Start menu search and open
@@ -134,7 +145,13 @@ list and choose **Uninstall**.
 
 ## On the Mac
 
-The quickest way to install them is to paste this into Terminal. It installs every
+The [installer with all of them](https://github.com/mottipython/marx-screensavers/releases/latest/download/MarxBrothers-ScreenSavers-1.0.0.pkg)
+puts them in for everyone on the Mac: double-click it and follow the steps (it asks
+for your password). It isn't signed with an Apple developer certificate, so if macOS
+won't open it, right-click it and choose **Open**, or allow it under System
+Settings, Privacy & Security.
+
+Or, the quickest way to install them is to paste this into Terminal. It installs every
 screen saver module for your user (no password needed):
 
     curl -fsSL https://raw.githubusercontent.com/mottipython/marx-screensavers/main/tools/mac-install.sh | sh
@@ -158,6 +175,17 @@ window, and that nothing crashed, then opens a report with pictures:
     curl -fsSL https://raw.githubusercontent.com/mottipython/marx-screensavers/main/tools/mac-test.sh | sh
 
 ## On Linux
+
+To install all of them, paste this into a terminal. It fetches the newest `.deb`
+(Debian, Ubuntu, Mint) or `.rpm` (Fedora, Nobara, openSUSE) of each and installs
+them, asking for your password once:
+
+    curl -fsSL https://raw.githubusercontent.com/mottipython/marx-screensavers/main/tools/linux-install.sh | sh
+
+To install only some, name them (`mirror-scene`, `captain-spaulding`, `duck-soup`,
+`groucho-clock`, `groucho-time`, `harpos-coat`); to take them off again:
+
+    curl -fsSL https://raw.githubusercontent.com/mottipython/marx-screensavers/main/tools/linux-install.sh | sh -s -- --uninstall
 
 If [screensaver-service](https://github.com/mottipython/screensaver-service) is
 installed, each one appears in its list of screen savers. Without it, each package
