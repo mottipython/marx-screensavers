@@ -16,7 +16,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt-get update -qq && sudo apt-get install -y -qq nsis
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq nsis p7zip-full
       - run: sh tools/build-bundle.sh "${{ inputs.version }}"
       - uses: actions/upload-artifact@v4
         with:

@@ -1,15 +1,17 @@
-; The Marx Brothers screen savers, all in one. Each one's own setup program comes
-; inside this one and is run quietly for each one ticked, so they install exactly as
-; they do from their own downloads, and each can still be removed by itself from
-; Settings, Apps. Then the one chosen is made the screen saver.
+; The Marx Brothers screen savers, all in one. Each one ticked is put in just as its
+; own setup does it (the same folder, the same entry in Settings, Apps, and an
+; uninstaller that removes it alone); then the one chosen is made the screen saver.
+; Its files are unpacked from its own setup at build time: running those setups from
+; inside this one looked to antivirus like a dropper, and it quietly stopped them.
 ;
-; Built by tools/build-bundle.sh, which fetches the setups and writes
-; build/savers.nsh: one "!insertmacro SAVER n title setup scr" line for each.
+; Built by tools/build-bundle.sh, which writes build/savers.nsh: one
+; "!insertmacro SAVER n title id key version" line for each.
 !include "MUI2.nsh"
 !include "nsDialogs.nsh"
 !include "LogicLib.nsh"
 !include "Sections.nsh"
 !include "x64.nsh"
+!include "FileFunc.nsh"
 
 !ifndef VERSION
   !define VERSION "1.0.0"
@@ -19,7 +21,7 @@ Name "The Marx Brothers Screen Savers"
 Caption "The Marx Brothers Screen Savers ${VERSION}"
 OutFile "..\..\dist\MarxBrothers-ScreenSavers-Setup-${VERSION}.exe"
 RequestExecutionLevel admin
-SetCompress off                 ; the setups inside are compressed already
+SetCompressor /SOLID lzma
 Unicode true
 ShowInstDetails show
 !define MUI_ICON "marx-screensavers.ico"
@@ -42,20 +44,56 @@ Var Chosen        ; the one that comes on: its number, or -1 for the one there w
 Var ChosenText    ; and its name, to show again if they come back to the page
 Var Original      ; the screen saver there was before
 Var List
+Var Failed        ; the ones that did not install, to tell the user
 
-; ---- the screen savers: a section for each, which runs its own setup quietly
-!macro SAVER N TITLE SETUP SCR
+; ---- the screen savers: a section for each, which puts in its files, its shortcuts and
+; its entry in Settings, Apps, just as its own setup does
+!macro SAVER N TITLE ID KEY VER
   !define TITLE_${N} "${TITLE}"
-  !define SCR_${N} "${SCR}"
+  !define SCR_${N} "${KEY}.scr"
+  !define KEY_${N} "${KEY}"
+  !define ID_${N} "${ID}"
   Section "${TITLE}" sec${N}
-    SetOutPath "$PLUGINSDIR"
+    SetRegView 64
     DetailPrint "Installing ${TITLE}..."
-    File "..\..\build\setups\${SETUP}"
-    ExecWait '"$PLUGINSDIR\${SETUP}" /S' $0
-    ${If} $0 != 0
-      DetailPrint "${TITLE}: its setup stopped with code $0"
+    SetOutPath "$PROGRAMFILES64\${TITLE}"
+    File "..\..\build\files\${ID}\${ID}.exe"
+    File "..\..\build\files\${ID}\*.dll"
+    File "..\..\build\files\${ID}\README.txt"
+    File "..\..\build\files\${ID}\LICENSE.txt"
+    WriteUninstaller "$OUTDIR\Uninstall.exe"
+    WriteRegStr HKLM "Software\${KEY}" "InstallDir" "$OUTDIR"
+    ${DisableX64FSRedirection}
+    SetOutPath "$WINDIR\System32"
+    File "..\..\build\files\${ID}\${KEY}.scr"
+    ${EnableX64FSRedirection}
+    StrCpy $1 "$PROGRAMFILES64\${TITLE}"
+    CreateDirectory "$SMPROGRAMS\${TITLE}"
+    CreateShortcut "$SMPROGRAMS\${TITLE}\${TITLE} (window).lnk" "$1\${ID}.exe" "--window"
+    CreateShortcut "$SMPROGRAMS\${TITLE}\${TITLE} (full screen).lnk" "$1\${ID}.exe" "/s"
+    CreateShortcut "$SMPROGRAMS\${TITLE}\Uninstall.lnk" "$1\Uninstall.exe"
+    !define UK_${N} "Software\Microsoft\Windows\CurrentVersion\Uninstall\${KEY}"
+    WriteRegStr HKLM "${UK_${N}}" "DisplayName" "${TITLE} screensaver"
+    WriteRegStr HKLM "${UK_${N}}" "DisplayVersion" "${VER}"
+    WriteRegStr HKLM "${UK_${N}}" "DisplayIcon" "$1\${ID}.exe"
+    WriteRegStr HKLM "${UK_${N}}" "UninstallString" '"$1\Uninstall.exe"'
+    WriteRegStr HKLM "${UK_${N}}" "InstallLocation" "$1"
+    WriteRegDWORD HKLM "${UK_${N}}" "NoModify" 1
+    WriteRegDWORD HKLM "${UK_${N}}" "NoRepair" 1
+    ${GetSize} "$1" "/S=0K" $2 $3 $4
+    IntFmt $2 "0x%08X" $2
+    WriteRegDWORD HKLM "${UK_${N}}" "EstimatedSize" "$2"
+    ; and check it really is there
+    ${DisableX64FSRedirection}
+    ${If} ${FileExists} "$WINDIR\System32\${KEY}.scr"
+    ${AndIf} ${FileExists} "$1\${ID}.exe"
+      ${EnableX64FSRedirection}
+      DetailPrint "${TITLE}: installed"
+    ${Else}
+      ${EnableX64FSRedirection}
+      DetailPrint "${TITLE}: NOT installed"
+      StrCpy $Failed "$Failed$\r$\n  ${TITLE}"
     ${EndIf}
-    Delete "$PLUGINSDIR\${SETUP}"
   SectionEnd
 !macroend
 !include "..\..\build\savers.nsh"
@@ -79,10 +117,19 @@ Var List
   !ifdef SCR_${N}
     ${If} $Chosen == ${N}
       WriteRegStr HKCU "Control Panel\Desktop" "SCRNSAVE.EXE" "$WINDIR\System32\${SCR_${N}}"
+      WriteRegStr HKCU "Control Panel\Desktop" "ScreenSaveActive" "1"
+      ReadRegStr $1 HKCU "Control Panel\Desktop" "ScreenSaveTimeOut"
+      ${If} $1 == ""
+        WriteRegStr HKCU "Control Panel\Desktop" "ScreenSaveTimeOut" "300"
+      ${EndIf}
     ${EndIf}
   !endif
 !macroend
 Section "-the one that comes on"
+  ${If} $Failed != ""
+    MessageBox MB_OK|MB_ICONEXCLAMATION "These did not install:$Failed$\r$\n$\r$\nIf Windows Security says it stopped something, that is a mistake (these programs aren't signed with a paid certificate): allow it there, then run this setup again." /SD IDOK
+    SetErrorLevel 2
+  ${EndIf}
   ${If} $Chosen < 0
     ${If} $Original == ""
       DeleteRegValue HKCU "Control Panel\Desktop" "SCRNSAVE.EXE"
@@ -159,3 +206,35 @@ Function OpenSettings
   ; for screen savers in SysWOW64, finds none of these, and shows (None)
   Exec '"$WINDIR\Sysnative\rundll32.exe" shell32.dll,Control_RunDLL desk.cpl,,1'
 FunctionEnd
+
+; ---- the uninstaller, in each one's folder: it removes the one it sits beside
+!macro UN_ONE N
+  !ifdef TITLE_${N}
+    ${If} $INSTDIR == "$PROGRAMFILES64\${TITLE_${N}}"
+      ReadRegStr $1 HKCU "Control Panel\Desktop" "SCRNSAVE.EXE"
+      ${If} $1 == "$WINDIR\System32\${SCR_${N}}"
+        DeleteRegValue HKCU "Control Panel\Desktop" "SCRNSAVE.EXE"
+      ${EndIf}
+      ${DisableX64FSRedirection}
+      Delete "$WINDIR\System32\${SCR_${N}}"
+      ${EnableX64FSRedirection}
+      Delete "$INSTDIR\${ID_${N}}.exe"
+      Delete "$SMPROGRAMS\${TITLE_${N}}\${TITLE_${N}} (window).lnk"
+      Delete "$SMPROGRAMS\${TITLE_${N}}\${TITLE_${N}} (full screen).lnk"
+      Delete "$SMPROGRAMS\${TITLE_${N}}\Uninstall.lnk"
+      RMDir "$SMPROGRAMS\${TITLE_${N}}"
+      DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${KEY_${N}}"
+      DeleteRegKey HKLM "Software\${KEY_${N}}"
+    ${EndIf}
+  !endif
+!macroend
+Section "Uninstall"
+  SetRegView 64
+  !insertmacro EACH UN_ONE
+  Delete "$INSTDIR\SDL2.dll"
+  Delete "$INSTDIR\SDL3.dll"
+  Delete "$INSTDIR\README.txt"
+  Delete "$INSTDIR\LICENSE.txt"
+  Delete "$INSTDIR\Uninstall.exe"
+  RMDir "$INSTDIR"
+SectionEnd

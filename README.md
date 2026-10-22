@@ -15,7 +15,7 @@ studios.
 
 | | |
 |---|---|
-| **Windows** | [**Download the Marx Brothers Screen Savers setup**](https://github.com/mottipython/marx-screensavers/releases/latest/download/MarxBrothers-ScreenSavers-Setup-1.0.0.exe) (113 MB): tick the ones you want, choose which comes on |
+| **Windows** | [**Download the Marx Brothers Screen Savers setup**](https://github.com/mottipython/marx-screensavers/releases/latest/download/MarxBrothers-ScreenSavers-Setup-1.0.1.exe) (104 MB): tick the ones you want, choose which comes on |
 | **Mac** | [**Download the Marx Brothers Screen Savers installer**](https://github.com/mottipython/marx-screensavers/releases/latest/download/MarxBrothers-ScreenSavers-1.0.0.pkg) (214 MB), or the Terminal line [below](#on-the-mac) |
 | **Linux** | paste the line [below](#on-linux) into a terminal |
 
@@ -118,7 +118,7 @@ and crashes.
 
 For Windows 10 or 11.
 
-1. Click [**the setup with all of them**](https://github.com/mottipython/marx-screensavers/releases/latest/download/MarxBrothers-ScreenSavers-Setup-1.0.0.exe), or just the one you want:
+1. Click [**the setup with all of them**](https://github.com/mottipython/marx-screensavers/releases/latest/download/MarxBrothers-ScreenSavers-Setup-1.0.1.exe), or just the one you want:
    - [**Download The Mirror Scene**](https://github.com/mottipython/mirror-scene/releases/latest/download/MirrorScene-Setup-1.0.0.exe)
    - [**Download Hooray for Captain Spaulding**](https://github.com/mottipython/captain-spaulding/releases/latest/download/CaptainSpaulding-Setup-1.1.0.exe)
    - [**Download Duck Soup**](https://github.com/mottipython/duck-soup/releases/latest/download/DuckSoup-Setup-1.1.0.exe)

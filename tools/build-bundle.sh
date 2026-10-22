@@ -1,6 +1,6 @@
 #!/bin/sh
 # The Marx Brothers screen savers, all in one Windows setup program: fetches each
-# one's latest Windows setup from its own releases, then builds
+# one's latest Windows setup from its own releases, unpacks its files, then builds
 # dist/MarxBrothers-ScreenSavers-Setup-VERSION.exe around them
 # (packaging/windows/marx-screensavers.nsi).
 #
@@ -19,12 +19,21 @@ groucho-time|Groucho Time|GrouchoTime
 harpos-coat|Harpo's Coat|HarposCoat"
 
 mkdir -p build/setups dist
+rm -rf build/files
 : > build/savers.nsh
 n=0
 echo "$SAVERS" | while IFS='|' read -r id title scr; do
     gh release download -R "mottipython/$id" --pattern '*Setup*.exe' -D build/setups --clobber
     setup=$(cd build/setups && ls -t "$scr"-Setup-*.exe | head -1)
-    echo "!insertmacro SAVER $n \"$title\" \"$setup\" \"$scr.scr\"" >> build/savers.nsh
+    version=${setup#"$scr"-Setup-}; version=${version%.exe}
+    # its files, unpacked from its own setup: the bundle installs them itself, rather
+    # than running setup programs from inside a setup program (which antivirus takes
+    # for a dropper and quietly stops)
+    7z x -y -o"build/files/$id" "build/setups/$setup" "$id.exe" SDL2.dll SDL3.dll README.txt LICENSE.txt "\$WINDIR/System32/$scr.scr" > /dev/null
+    mv "build/files/$id/\$WINDIR/System32/$scr.scr" "build/files/$id/"
+    rm -rf "build/files/$id/\$WINDIR"
+    ls "build/files/$id"
+    echo "!insertmacro SAVER $n \"$title\" \"$id\" \"$scr\" \"$version\"" >> build/savers.nsh
     n=$((n + 1))
 done
 echo "!define NSAVERS $(echo "$SAVERS" | wc -l)" >> build/savers.nsh
